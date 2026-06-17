@@ -633,7 +633,6 @@ select {
 .gallery-grid {
   display: grid;
   grid-auto-flow: dense;
-  grid-auto-rows: 180px;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
@@ -643,6 +642,7 @@ select {
   min-height: 0;
   margin: 0;
   overflow: hidden;
+  aspect-ratio: 1 / 1;
   border-radius: 8px;
   background: var(--beige);
 }
@@ -671,11 +671,11 @@ select {
 }
 
 .gallery-item--tall {
-  grid-row: span 2;
+  grid-row: span 1;
 }
 
 .gallery-item--wide {
-  grid-column: span 2;
+  grid-column: span 1;
 }
 
 .gallery-item:nth-last-child(-n + 3) {
@@ -1143,11 +1143,11 @@ select {
   }
 
   .gallery-grid {
-    grid-auto-rows: 150px;
+    grid-auto-rows: auto;
   }
 
   .gallery-item--wide {
-    grid-column: span 2;
+    grid-column: span 1;
   }
 
   .experience-grid,
