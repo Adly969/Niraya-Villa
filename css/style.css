@@ -522,6 +522,8 @@ select {
 
 .villa-card,
 .testimonial-card {
+  display: flex;
+  flex-direction: column;
   background: var(--white);
   border-radius: 12px;
   box-shadow: var(--shadow);
@@ -542,7 +544,14 @@ select {
 }
 
 .villa-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 24px;
+}
+
+.villa-card__body .button {
+  margin-top: auto;
 }
 
 .price-badge {
@@ -702,6 +711,14 @@ select {
 
 .gallery-item:hover img {
   transform: scale(1.03);
+}
+
+.gallery-item:nth-child(4) img {
+  object-position: center 70%;
+}
+
+.gallery-item:nth-child(5) img {
+  object-position: center 80%;
 }
 
 .experience {
