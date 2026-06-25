@@ -281,7 +281,7 @@
         <div class="booking-card__copy">
           <p class="section-kicker">Book your stay</p>
           <h2 id="booking-title">Check your preferred dates</h2>
-          <p>Dummy availability form. Submitting will prepare a WhatsApp message for direct booking.</p>
+          <p>Instantly check rates and availability for your escape to East Bali.</p>
         </div>
         <form class="booking-form" data-booking-form>
           <div class="field">
@@ -392,6 +392,72 @@
       <path d="M16.02 4.2A11.72 11.72 0 0 0 6.1 22.16L4.8 27.8l5.75-1.26A11.72 11.72 0 1 0 16.02 4.2Zm0 2.14a9.58 9.58 0 0 1 8.13 14.66 9.6 9.6 0 0 1-12.87 3.29l-.38-.22-3.43.75.77-3.34-.25-.4a9.58 9.58 0 0 1 8.03-14.74Zm-4.18 4.73c-.22 0-.58.08-.88.42-.3.34-1.16 1.14-1.16 2.77 0 1.63 1.19 3.2 1.35 3.42.17.22 2.29 3.67 5.68 5 .71.28 1.27.45 1.7.58.71.23 1.36.2 1.88.12.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.13-.28-.21-.58-.36-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.58Z"/>
     </svg>
   </a>
+
+  <!-- Booking Result Modal -->
+  <div class="booking-modal" id="bookingModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="booking-modal__backdrop" data-close-modal></div>
+    <div class="booking-modal__content">
+      <button class="booking-modal__close" type="button" aria-label="Close dialog" data-close-modal>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      
+      <!-- Loading State -->
+      <div class="booking-modal__state is-loading" id="modalStateLoading">
+        <div class="spinner"></div>
+        <p>Checking availability in our reservation database...</p>
+      </div>
+
+      <!-- Success State (Available) -->
+      <div class="booking-modal__state" id="modalStateSuccess" style="display: none;">
+        <div class="modal-status-icon success">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle-2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3 id="modalTitle">Villa is Available!</h3>
+        <p class="modal-subtitle">Good news, your selected dates are currently open for booking.</p>
+        
+        <div class="booking-summary">
+          <div class="summary-row">
+            <span class="summary-label">Villa Type:</span>
+            <span class="summary-value" id="summaryVilla">Garden Pool Villa</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Dates:</span>
+            <span class="summary-value" id="summaryDates">June 27, 2026 - June 29, 2026</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Duration:</span>
+            <span class="summary-value" id="summaryNights">2 nights</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Guests:</span>
+            <span class="summary-value" id="summaryGuests">2 guests</span>
+          </div>
+          <hr class="summary-divider">
+          <div class="summary-row total">
+            <span class="summary-label">Estimated Total:</span>
+            <span class="summary-value total-price" id="summaryTotal">IDR 2,500,000</span>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <a class="button button--primary w-full" id="confirmBookingBtn" href="#" target="_blank" rel="noopener">Book This Villa via WhatsApp</a>
+          <button class="button button--outline" type="button" data-close-modal>Modify Dates</button>
+        </div>
+      </div>
+
+      <!-- Error/Unavailable State -->
+      <div class="booking-modal__state" id="modalStateError" style="display: none;">
+        <div class="modal-status-icon error">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-circle"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12" y1="16" y2="16.01"/></svg>
+        </div>
+        <h3>Check-out date is invalid</h3>
+        <p id="modalErrorMessage">Please make sure check-out date is after check-in date.</p>
+        <div class="modal-actions">
+          <button class="button button--primary" type="button" data-close-modal>Try Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="js/main.js"></script>
